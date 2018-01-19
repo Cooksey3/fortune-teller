@@ -5,40 +5,84 @@ public class FortuneTeller {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
+		// String quit;
+		// if (input.trim().equals("quit")) {
+		// System.out.println("Nobody likes a quitter...");
+		// System.exit(0);
+		// }
+
 		// Step 1: Get user input (full name, age, color, birth month, sib no.)
 		System.out.print("Enter your first name: ");
 		String firstName = input.nextLine();
 
+		if (firstName.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		}
+
 		System.out.print("Enter your last name: ");
 		String lastName = input.nextLine();
 
+		if (lastName.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		}
+
 		System.out.print("Enter your age in years: ");
-		int age = input.nextInt();
-		input.nextLine();
+		String age = input.nextLine();
+
+		if (age.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		} else {
+			Integer.parseInt(age);
+		}
 
 		System.out.print("Please write your favorite ROYGBIV color or \"help\" for help: ");
 		String favoriteColor = input.nextLine();
 
-		// Help in case user doesn't understand ROYGBIV
-		if (favoriteColor.toLowerCase().trim().equals("help")) {
+		if (favoriteColor.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		}
+
+		// // Help in case user doesn't understand ROYGBIV
+		while (favoriteColor.toLowerCase().trim().equals("help")) {
 			System.out.println("The ROYGBIV colors are: Red, Orange, Yellow, Green, Blue, Indigo, Violet");
 			System.out.print("Please write your favorite ROYGIBV color: ");
 			favoriteColor = input.nextLine();
+			if (favoriteColor.trim().toLowerCase().equals("quit")) {
+				System.out.println("Nobody likes a quitter...");
+				System.exit(0);
+			} 
 		}
 
 		System.out.print("Enter the number of your birth month: ");
-		int birthMonth = input.nextInt();
+		String birthMonth = input.nextLine();
+
+		if (birthMonth.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		} else {
+			Integer.parseInt(birthMonth);
+		}
 
 		System.out.print("Enter your number of siblings: ");
-		int numberOfSiblings = input.nextInt();
+		String numberOfSiblings = input.nextLine();
 
+		if (numberOfSiblings.trim().toLowerCase().equals("quit")) {
+			System.out.println("Nobody likes a quitter...");
+			System.exit(0);
+		} else {
+			Integer.parseInt(numberOfSiblings);
+		}
 		// Step 2: Fortunes based on user input (years to retirement, bank
 		// balance, retirement location, mode of transportation)
 		int numberOfYears;
 
-		if (age % 2 == 1) {
+		if (Integer.parseInt(age) % 2 == 1) {
 			numberOfYears = 20;
-		} else if (age <= 0) {
+		} else if (Integer.parseInt(age) <= 0) {
 			numberOfYears = 999;
 		} else {
 			numberOfYears = 2;
@@ -46,17 +90,17 @@ public class FortuneTeller {
 
 		double bankBalance;
 
-		if (birthMonth == 1 || birthMonth == 2) {
+		if (Integer.parseInt(birthMonth) == 1 || Integer.parseInt(birthMonth) == 2) {
 			bankBalance = 4000000.00;
-		} else if (birthMonth == 3 || birthMonth == 4) {
+		} else if (Integer.parseInt(birthMonth) == 3 || Integer.parseInt(birthMonth) == 4) {
 			bankBalance = 250000.00;
-		} else if (birthMonth == 5 || birthMonth == 6) {
+		} else if (Integer.parseInt(birthMonth) == 5 || Integer.parseInt(birthMonth) == 6) {
 			bankBalance = 10.00;
-		} else if (birthMonth == 7 || birthMonth == 8) {
+		} else if (Integer.parseInt(birthMonth) == 7 || Integer.parseInt(birthMonth) == 8) {
 			bankBalance = 600000.00;
-		} else if (birthMonth == 9 || birthMonth == 10) {
+		} else if (Integer.parseInt(birthMonth) == 9 || Integer.parseInt(birthMonth) == 10) {
 			bankBalance = 950.33;
-		} else if (birthMonth == 11 || birthMonth == 12) {
+		} else if (Integer.parseInt(birthMonth) == 11 || Integer.parseInt(birthMonth) == 12) {
 			bankBalance = 99999999999.00;
 		} else {
 			bankBalance = -3000.00;
@@ -64,15 +108,15 @@ public class FortuneTeller {
 
 		String location;
 
-		if (numberOfSiblings == 0) {
+		if (Integer.parseInt(numberOfSiblings) == 0) {
 			location = "Beijing, China";
-		} else if (numberOfSiblings == 1) {
+		} else if (Integer.parseInt(numberOfSiblings) == 1) {
 			location = "San Francisco, CA";
-		} else if (numberOfSiblings == 2) {
+		} else if (Integer.parseInt(numberOfSiblings) == 2) {
 			location = "Paris, France";
-		} else if (numberOfSiblings == 3) {
+		} else if (Integer.parseInt(numberOfSiblings) == 3) {
 			location = "Barcelona, Spain";
-		} else if (numberOfSiblings > 3) {
+		} else if (Integer.parseInt(numberOfSiblings) > 3) {
 			location = "the rolling plains of New Zealand";
 		} else {
 			location = "a frozen wasteland with shorts and a t-shirt";
@@ -99,8 +143,9 @@ public class FortuneTeller {
 		}
 
 		// Step 3: Final fortune
-		System.out.println(firstName + " " + lastName + " will retire in " + numberOfYears + " year, with $"
-				+ bankBalance + " in the bank, a vacation home in " + location + " and travel by " + transportation + ".");
+		System.out
+				.println(firstName + " " + lastName + " will retire in " + numberOfYears + " year, with $" + bankBalance
+						+ " in the bank, a vacation home in " + location + " and travel by " + transportation + ".");
 
 		input.close();
 	}
