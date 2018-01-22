@@ -5,12 +5,6 @@ public class FortuneTeller {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		// String quit;
-		// if (input.trim().equals("quit")) {
-		// System.out.println("Nobody likes a quitter...");
-		// System.exit(0);
-		// }
-
 		// Step 1: Get user input (full name, age, color, birth month, sib no.)
 		System.out.print("Enter your first name: ");
 		String firstName = input.nextLine();
